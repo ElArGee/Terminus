@@ -1,20 +1,41 @@
 macro "colemak"
-	elem
+	elem 
+		name = "A+UP"
+		command = ".keyup 65"
+		is-disabled = false
+	elem 
 		name = "A+REP"
-		command = ".west"
+		command = ".keydown 65"
 		is-disabled = false
-	elem
+	elem 
+		name = "Q"
+		command = ".keydown 81"
+		is-disabled = false
+	elem 
+		name = "R+UP"
+		command = ".keyup 82"
+		is-disabled = false
+	elem 
 		name = "R+REP"
-		command = ".south"
+		command = ".keydown 82"
 		is-disabled = false
-	elem
+	elem 
+		name = "S+UP"
+		command = ".keyup 83"
+		is-disabled = false
+	elem 
 		name = "S+REP"
-		command = ".east"
+		command = ".keydown 83"
 		is-disabled = false
-	elem
+	elem 
+		name = "W+UP"
+		command = ".keyup 87"
+		is-disabled = false
+	elem 
 		name = "W+REP"
-		command = ".north"
+		command = ".keydown 87"
 		is-disabled = false
+
 
 menu "menu"
 
@@ -109,12 +130,12 @@ window "outputwindow"
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-size = ""
 		title = ""
-		titlebar = true
-		statusbar = true
-		can-close = true
-		can-minimize = true
-		can-resize = true
-		is-pane = false
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
 		is-minimized = false
 		is-maximized = false
 		can-scroll = none
@@ -177,3 +198,4 @@ window "outputwindow"
 		enable-http-images = false
 		max-lines = 1000
 		image = ""
+

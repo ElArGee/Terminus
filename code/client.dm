@@ -9,16 +9,14 @@
 	var/hudobj/topright
 	var/hudobj/bottomleft
 	var/hudobj/bottomright
-	var/hudobj/center
 	var/hudobj/bottomcenter
 
 /client/New()
-	topleft = new(null, src, list(icon = 'floor.dmi', icon_state = "north", anchor_x = "WEST", anchor_y = "NORTH"), 1)
-	topright = new(null, src, list(icon = 'floor.dmi', icon_state = "east", anchor_x = "EAST", anchor_y = "NORTH"), 1)
-	bottomleft = new(null, src, list(icon = 'floor.dmi', icon_state = "west", anchor_x = "WEST", anchor_y = "SOUTH"), 1)
-	bottomright = new(null, src, list(icon = 'floor.dmi', icon_state = "south", anchor_x = "EAST", anchor_y = "SOUTH"), 1)
-	center = new(null, src, list(icon = 'floor.dmi', icon_state = "center", anchor_x = "CENTER", anchor_y = "CENTER"), 1)
-	bottomcenter = new(null, src, list(icon = 'floor.dmi', icon_state = "center", anchor_x = "CENTER", anchor_y = "SOUTH"), 1)
+	topleft = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "north", anchor_x = "WEST", anchor_y = "NORTH"), 1)
+	topright = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "east", anchor_x = "EAST", anchor_y = "NORTH"), 1)
+	bottomleft = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "west", anchor_x = "WEST", anchor_y = "SOUTH"), 1)
+	bottomright = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "south", anchor_x = "EAST", anchor_y = "SOUTH"), 1)
+	bottomcenter = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "center", anchor_x = "CENTER", anchor_y = "SOUTH"), 1)
 	..()
 
 /client/Del()
@@ -26,7 +24,6 @@
 	topright = null
 	bottomleft = null
 	bottomright = null
-	center = null
 	screen.Cut()
 	..()
 

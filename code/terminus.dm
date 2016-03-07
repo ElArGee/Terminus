@@ -11,11 +11,13 @@
 // Make objects move 8 pixels per tick when walking
 
 /mob
-	step_size = 4
-	bound_x = 8
-	bound_y = 8
-	bound_width = 16
-	bound_height = 16
+	step_size = 2
+	bound_x = 12
+	bound_y = 4
+	bound_width = 8
+	bound_height = 20
+
+	icon = 'icons/man.dmi'
 
 /obj
-	step_size = 4
+	step_size = 2

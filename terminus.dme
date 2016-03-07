@@ -14,14 +14,15 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "_defines.dm"
-#include "client.dm"
-#include "debug.dm"
-#include "hud.dm"
-#include "stylesheet.dm"
-#include "terminus.dm"
-#include "turfs.dm"
-#include "interface.dmf"
-#include "devmap.dmm"
+#include "code\_defines.dm"
+#include "code\client.dm"
+#include "code\client_control.dm"
+#include "code\debug.dm"
+#include "code\hud.dm"
+#include "code\stylesheet.dm"
+#include "code\terminus.dm"
+#include "code\turf.dm"
+#include "maps\devmap.dmm"
+#include "ui\interface.dmf"
 // END_INCLUDE
 
