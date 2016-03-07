@@ -1,3 +1,7 @@
 # Terminus
+/ˈtəːmɪnəs/  
 
-I'll add something here later
+`LATIN`: bound  
+
+_adjective_  
+&emsp;&emsp;restricted or confined to a specified place.
