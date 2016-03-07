@@ -1,0 +1,27 @@
+// DM Environment file for terminus.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+#define DEBUG
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include "_defines.dm"
+#include "client.dm"
+#include "debug.dm"
+#include "hud.dm"
+#include "stylesheet.dm"
+#include "terminus.dm"
+#include "turfs.dm"
+#include "interface.dmf"
+#include "devmap.dmm"
+// END_INCLUDE
+
