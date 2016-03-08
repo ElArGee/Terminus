@@ -1,39 +1,39 @@
-macro "colemak"
+macro "keybinds"
 	elem 
 		name = "A+UP"
-		command = ".keyup 65"
+		command = ".keyup A"
 		is-disabled = false
 	elem 
 		name = "A+REP"
-		command = ".keydown 65"
+		command = ".keydown A"
 		is-disabled = false
 	elem 
 		name = "Q"
-		command = ".keydown 81"
+		command = ".keydown Q"
 		is-disabled = false
 	elem 
 		name = "R+UP"
-		command = ".keyup 82"
+		command = ".keyup R"
 		is-disabled = false
 	elem 
 		name = "R+REP"
-		command = ".keydown 82"
+		command = ".keydown R"
 		is-disabled = false
 	elem 
 		name = "S+UP"
-		command = ".keyup 83"
+		command = ".keyup S"
 		is-disabled = false
 	elem 
 		name = "S+REP"
-		command = ".keydown 83"
+		command = ".keydown S"
 		is-disabled = false
 	elem 
 		name = "W+UP"
-		command = ".keyup 87"
+		command = ".keyup W"
 		is-disabled = false
 	elem 
 		name = "W+REP"
-		command = ".keydown 87"
+		command = ".keydown W"
 		is-disabled = false
 
 
@@ -77,7 +77,7 @@ window "mainwindow"
 		keep-aspect = false
 		transparent-color = none
 		alpha = 255
-		macro = "colemak"
+		macro = "keybinds"
 		menu = ""
 		on-close = ""
 	elem "mainmap"
@@ -111,7 +111,7 @@ window "mainwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 307,83
 		size = 350x480
 		anchor1 = none
 		anchor2 = none
@@ -129,13 +129,13 @@ window "outputwindow"
 		right-click = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		on-size = ""
-		title = ""
-		titlebar = false
+		title = "Dev"
+		titlebar = true
 		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
+		can-close = true
+		can-minimize = true
+		can-resize = true
+		is-pane = false
 		is-minimized = false
 		is-maximized = false
 		can-scroll = none
