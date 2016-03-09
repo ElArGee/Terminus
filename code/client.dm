@@ -62,3 +62,6 @@
 /mob/Login()
 	client.onResize()
 	return ..()
+
+/client/Click(object, location, control, params)
+	walk_towards(mob,location)

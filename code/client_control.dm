@@ -44,24 +44,25 @@ KeyUp()
 
 
 //Movement keybinds
+//	KeyDown movement keybinds set the move dir variable, then call the appropriate client directional movement proc
+//	KeyUp movement keybinds unset the move dir variable
 /keybind/north
 	name = "Move Up"
 
-/keybind/south
-	name = "Move Down"
-
-/keybind/east
-	name = "Move Right"
-
-/keybind/west
-	name = "Move Left"
-
-//	KeyDown movement keybinds set the move dir variable, then call the appropriate client directional movement proc
 /keybind/north/KeyDown()
 	if(!..())
 		return
 	attached_client.move_dir |= NORTH
 	attached_client.North()
+
+/keybind/north/KeyUp()
+	if(!..())
+		return
+	attached_client.move_dir &= ~NORTH
+
+
+/keybind/south
+	name = "Move Down"
 
 /keybind/south/KeyDown()
 	if(!..())
@@ -69,33 +70,34 @@ KeyUp()
 	attached_client.move_dir |= SOUTH
 	attached_client.South()
 
+/keybind/south/KeyUp()
+	if(!..())
+		return
+	attached_client.move_dir &= ~SOUTH
+
+/keybind/east
+	name = "Move Right"
+
 /keybind/east/KeyDown()
 	if(!..())
 		return
 	attached_client.move_dir |= EAST
 	attached_client.East()
 
+/keybind/east/KeyUp()
+	if(!..())
+		return
+	attached_client.move_dir &= ~EAST
+
+
+/keybind/west
+	name = "Move Left"
+
 /keybind/west/KeyDown()
 	if(!..())
 		return
 	attached_client.move_dir |= WEST
 	attached_client.West()
-
-//	KeyUp movement keybinds unset the move dir variable
-/keybind/north/KeyUp()
-	if(!..())
-		return
-	attached_client.move_dir &= ~NORTH
-
-/keybind/south/KeyUp()
-	if(!..())
-		return
-	attached_client.move_dir &= ~SOUTH
-
-/keybind/east/KeyUp()
-	if(!..())
-		return
-	attached_client.move_dir &= ~EAST
 
 /keybind/west/KeyUp()
 	if(!..())
@@ -117,7 +119,18 @@ KeyUp()
 	for(var/T in (typesof(/keybind) - /keybind))
 		key_actions.Add(new T(src))
 
-//	keybinds = list("W" = new/keybind/north(src), "A" = new/keybind/west(src), "S" = new/keybind/east(src), "R" = new/keybind/south(src))
+	//temp code for mapping keybinds at client join
+	for(var/keybind/K in key_actions)
+		switch(K.name)
+			if("Move Up")
+				keybinds["W"] = K
+			if("Move Down")
+				keybinds["R"] = K
+			if("Move Left")
+				keybinds["A"] = K
+			if("Move Right")
+				keybinds["S"] = K
+
 	..()
 
 //client directional movement proc overrides
