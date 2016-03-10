@@ -9,3 +9,5 @@
 #define		MAX_VIEW_TILES	768				//maximum number of tiles allowed in view before it scales up
 
 #define		HUD_LAYER		10
+
+#define		DOUT			0

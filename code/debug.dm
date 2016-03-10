@@ -1,5 +1,5 @@
 /proc/dout(var/s)
-#ifdef DEBUG
+#if DOUT
 	world << "<span class='debug'>DEBUG: [s]</span>"
 #else
 	return
