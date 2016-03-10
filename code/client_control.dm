@@ -52,14 +52,23 @@ KeyUp()
 /keybind/north/KeyDown()
 	if(!..())
 		return
-	attached_client.move_dir |= NORTH
+	attached_client.move_dir_y = NORTH
 	attached_client.North()
 
 /keybind/north/KeyUp()
 	if(!..())
 		return
-	attached_client.move_dir &= ~NORTH
 
+	if(attached_client.move_dir_y == NORTH)
+		attached_client.move_dir_y = 0
+
+	attached_client.MoveStop()
+
+	switch(attached_client.move_dir_x)
+		if(EAST)
+			attached_client.East()
+		if(WEST)
+			attached_client.West()
 
 /keybind/south
 	name = "Move Down"
@@ -67,13 +76,23 @@ KeyUp()
 /keybind/south/KeyDown()
 	if(!..())
 		return
-	attached_client.move_dir |= SOUTH
+	attached_client.move_dir_y = SOUTH
 	attached_client.South()
 
 /keybind/south/KeyUp()
 	if(!..())
 		return
-	attached_client.move_dir &= ~SOUTH
+
+	if(attached_client.move_dir_y == SOUTH)
+		attached_client.move_dir_y = 0
+
+	attached_client.MoveStop()
+
+	switch(attached_client.move_dir_x)
+		if(EAST)
+			attached_client.East()
+		if(WEST)
+			attached_client.West()
 
 /keybind/east
 	name = "Move Right"
@@ -81,14 +100,23 @@ KeyUp()
 /keybind/east/KeyDown()
 	if(!..())
 		return
-	attached_client.move_dir |= EAST
+	attached_client.move_dir_x = EAST
 	attached_client.East()
 
 /keybind/east/KeyUp()
 	if(!..())
 		return
-	attached_client.move_dir &= ~EAST
 
+	if(attached_client.move_dir_x == EAST)
+		attached_client.move_dir_x = 0
+
+	attached_client.MoveStop()
+
+	switch(attached_client.move_dir_y)
+		if(NORTH)
+			attached_client.North()
+		if(SOUTH)
+			attached_client.South()
 
 /keybind/west
 	name = "Move Left"
@@ -96,18 +124,60 @@ KeyUp()
 /keybind/west/KeyDown()
 	if(!..())
 		return
-	attached_client.move_dir |= WEST
+	attached_client.move_dir_x = WEST
 	attached_client.West()
 
 /keybind/west/KeyUp()
 	if(!..())
 		return
-	attached_client.move_dir &= ~WEST
 
+	if(attached_client.move_dir_x == WEST)
+		attached_client.move_dir_x = 0
+
+	attached_client.MoveStop()
+
+	switch(attached_client.move_dir_y)
+		if(NORTH)
+			attached_client.North()
+		if(SOUTH)
+			attached_client.South()
+
+/keybind/shift
+	name = "Run"
+
+/keybind/shift/KeyDown()
+	if(!..())
+		return
+
+	attached_client.mob.step_size *= 2
+	ResetMovement()
+
+/keybind/shift/KeyUp()
+	if(!..())
+		return
+
+	attached_client.mob.step_size = initial(attached_client.mob.step_size)
+	ResetMovement()
+
+/keybind/shift/proc/ResetMovement()
+	attached_client.MoveStop()
+	switch(attached_client.move_dir_y)
+		if(NORTH)
+			attached_client.North()
+		if(SOUTH)
+			attached_client.South()
+		else
+			switch(attached_client.move_dir_x)
+				if(EAST)
+					attached_client.East()
+				if(WEST)
+					attached_client.West()
 
 //var and proc modifications for /client
 /client
 	var/move_dir = 0		//bitflags for movement keys being held down
+	var/move_dir_x = 0
+	var/move_dir_y = 0
 	var/bind = FALSE		//flag for rebinding keys
 	var/list/key_actions	//list of all keybind actions
 	var/list/keybinds		//list of keybind actions associated with a key
@@ -130,49 +200,59 @@ KeyUp()
 				keybinds["A"] = K
 			if("Move Right")
 				keybinds["S"] = K
-
+			if("Run")
+				keybinds["SHIFT"] = K
 	..()
 
 //client directional movement proc overrides
 //	checks if a perpendicular movement key is being held down
 //	if one is, call the diagonal movement proc instead
 /client/North()
-	if(move_dir & EAST)
-		Northeast()
-	else if(move_dir & WEST)
-		Northwest()
-	else
-		..()
+	switch(move_dir_x)
+		if(EAST)
+			walk(mob, NORTHEAST, , mob.step_size * 0.8)
+		if(WEST)
+			walk(mob, NORTHWEST, , mob.step_size * 0.8)
+		else
+			walk(mob, NORTH, , 0)
 
 /client/South()
-	if(move_dir & EAST)
-		Southeast()
-	else if(move_dir & WEST)
-		Southwest()
-	else
-		..()
+	switch(move_dir_x)
+		if(EAST)
+			walk(mob, SOUTHEAST, , mob.step_size * 0.8)
+		if(WEST)
+			walk(mob, SOUTHWEST, , mob.step_size * 0.8)
+		else
+			walk(mob, SOUTH, , 0)
 
 /client/East()
-	if(move_dir & NORTH)
-		Northeast()
-	else if(move_dir & SOUTH)
-		Southeast()
-	else
-		..()
+	switch(move_dir_y)
+		if(NORTH)
+			walk(mob, NORTHEAST, , mob.step_size * 0.8)
+		if(SOUTH)
+			walk(mob, SOUTHEAST, , mob.step_size * 0.8)
+		else
+			walk(mob, EAST, , 0)
 
 /client/West()
-	if(move_dir & NORTH)
-		Northwest()
-	else if(move_dir & SOUTH)
-		Southwest()
-	else
-		..()
+	switch(move_dir_y)
+		if(NORTH)
+			walk(mob, NORTHWEST, , mob.step_size * 0.8)
+		if(SOUTH)
+			walk(mob, SOUTHWEST, , mob.step_size * 0.8)
+		else
+			walk(mob, WEST, , 0)
+
+/client/proc/MoveStop()
+	walk(mob, 0)
 
 //KeyDown and KeyUp verbs:
 //	called when a key is pressed, which then calls the keybind event associated with that keycode
 /client/verb/KeyDown(var/KeyID as text)
 	set name = ".keydown"
 	set instant = 1
+
+	dout("KeyDown: [KeyID]")
 
 	if(bind)
 		BindKey(KeyID)
@@ -185,6 +265,8 @@ KeyUp()
 /client/verb/KeyUp(var/KeyID as text)
 	set name = ".keyup"
 	set instant = 1
+
+	dout("KeyUp: [KeyID]")
 
 	var/keybind/K = keybinds[KeyID]
 	if(K)

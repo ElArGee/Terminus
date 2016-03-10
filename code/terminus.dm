@@ -20,4 +20,4 @@
 	icon = 'icons/man.dmi'
 
 /obj
-	step_size = 2
+	step_size = 4
