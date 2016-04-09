@@ -15,10 +15,12 @@
 
 // BEGIN_INCLUDE
 #include "code\_defines.dm"
+#include "code\_hud.dm"
 #include "code\client.dm"
 #include "code\client_control.dm"
 #include "code\debug.dm"
-#include "code\hud.dm"
+#include "code\hud_objects.dm"
+#include "code\keybind.dm"
 #include "code\stylesheet.dm"
 #include "code\terminus.dm"
 #include "code\turf.dm"

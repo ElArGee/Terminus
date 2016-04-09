@@ -11,12 +11,20 @@
 	var/hudobj/bottomright
 	var/hudobj/bottomcenter
 
+	var/hudgroup/top_left
+	var/hudgroup/top_mid
+	var/hudgroup/top_right
+	var/hudgroup/mid_left
+	var/hudgroup/mid_mid
+	var/hudgroup/mid_right
+	var/hudgroup/bottom_left
+	var/hudgroup/bottom_mid
+	var/hudgroup/bottom_right
+
+
 /client/New()
-	topleft = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "north", anchor_x = "WEST", anchor_y = "NORTH"), 1)
-	topright = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "east", anchor_x = "EAST", anchor_y = "NORTH"), 1)
-	bottomleft = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "west", anchor_x = "WEST", anchor_y = "SOUTH"), 1)
-	bottomright = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "south", anchor_x = "EAST", anchor_y = "SOUTH"), 1)
-	bottomcenter = new(null, src, list(icon = 'icons/floor.dmi', icon_state = "center", anchor_x = "CENTER", anchor_y = "SOUTH"), 1)
+	var/hudobj/menu/intent/M = new(null, src, list(anchor_x = "EAST", anchor_y = "SOUTH"), 1)
+	bottomright = M
 	..()
 
 /client/Del()
@@ -30,32 +38,19 @@
 /client/verb/onResize()
 	set hidden = 1
 	set waitfor = 0
-	var/sz = winget(src, "mainmap", "size")
+
+	var/sz = winget(src, "mainwindow", "size")
 	var/map_width = text2num(sz)
 	var/map_height = text2num(copytext(sz, findtext(sz, "x") + 1, 0))
-	map_zoom = 1
 
-	view_width = ceil(map_width / TILE_WIDTH)
-	if(!(view_width % 2))
-		++view_width
-	view_height = ceil(map_height / TILE_HEIGHT)
-	if(!(view_height % 2))
-		++view_height
+	if(map_width < map_height)
+		map_zoom = map_width / TILE_WIDTH
+	else
+		map_zoom = map_height / TILE_HEIGHT
 
-	while(view_width * view_height > MAX_VIEW_TILES)
-		view_width = ceil(map_width / TILE_WIDTH / ++map_zoom)
-		if(!(view_width % 2))
-			++view_width
-		view_height = ceil(map_height / TILE_HEIGHT / map_zoom)
-		if(!(view_height % 2))
-			++view_height
+	map_zoom = max(1, floor(map_zoom / (view * 2 + 1)))
 
-	buffer_x = floor((view_width * TILE_WIDTH - map_width / map_zoom) / 2)
-	buffer_y = floor((view_height * TILE_HEIGHT - map_height / map_zoom) / 2)
-
-	src.view = "[view_width]x[view_height]"
 	winset(src, "mainmap", "zoom=[map_zoom];")
-
 	for(var/hudobj/h in screen)
 		h.updatePos()
 

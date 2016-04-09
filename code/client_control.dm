@@ -1,6 +1,6 @@
 //var and proc modifications for /client
 /client
-	//bitflags for movement keys being held down
+	//vars for movement keys being held down
 	var/move_dir_x = 0
 	var/move_dir_y = 0
 	var/run = FALSE
@@ -33,10 +33,11 @@
 
 //MovePlayer
 //	handles which direction to move the player in
+//	todo: move speed calc to mob
 /client/proc/MovePlayer()
 	var/move_speed = mob.step_size
 
-	//if we are moving on a diagonal, reduce step size
+	//if we are moving on a diagonal and running, reduce step size
 	if(move_dir_x && move_dir_y && run)
 		move_speed *= 0.8
 

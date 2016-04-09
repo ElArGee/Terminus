@@ -44,8 +44,8 @@ KeyUp()
 
 
 //Movement keybinds
-//	KeyDown movement keybinds set the move dir variable, then call the appropriate client directional movement proc
-//	KeyUp movement keybinds unset the move dir variable
+//	KeyDown movement keybinds set the appropriate x or y move dir variable, then call the clients MovePlayer proc
+//	KeyUp movement keybinds unset the move dir variable, then calls the clients MovePlayer proc
 /keybind/north
 	name = "Move Up"
 
