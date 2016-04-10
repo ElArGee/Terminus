@@ -12,3 +12,4 @@
 #define		MENU_LAYER		50
 
 #define		DOUT			1
+#define		WORLDTICKDRIFT	1

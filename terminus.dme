@@ -14,16 +14,16 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "code\_defines.dm"
-#include "code\_hud.dm"
-#include "code\client.dm"
-#include "code\client_control.dm"
-#include "code\debug.dm"
-#include "code\hud_objects.dm"
-#include "code\keybind.dm"
-#include "code\stylesheet.dm"
 #include "code\terminus.dm"
-#include "code\turf.dm"
+#include "code\_defines\_defines.dm"
+#include "code\client\client.dm"
+#include "code\client\client_control.dm"
+#include "code\client\keybind.dm"
+#include "code\client\stylesheet.dm"
+#include "code\debug\debug.dm"
+#include "code\hud\_hud.dm"
+#include "code\hud\hud_objects.dm"
+#include "code\turf\turf.dm"
 #include "maps\devmap.dmm"
 #include "ui\interface.dmf"
 // END_INCLUDE

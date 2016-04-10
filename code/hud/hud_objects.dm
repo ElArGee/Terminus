@@ -19,17 +19,17 @@
 		M.ToggleMenu()
 
 /hudobj/intent/help
-	intent_icon_state = "help"
+	intent_icon = "help"
 	intent_color = "#00FF00"
 
 /hudobj/intent/grab
-	intent_icon_state = "grab"
+	intent_icon = "grab"
 	intent_color = "#FFFF00"
 
 /hudobj/intent/disarm
-	intent_icon_state = "disarm"
+	intent_icon = "disarm"
 	intent_color = "#00CCFF"
 
 /hudobj/intent/harm
-	intent_icon_state = "harm"
+	intent_icon = "harm"
 	intent_color = "#FF4400"
