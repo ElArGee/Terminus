@@ -134,3 +134,13 @@ KeyUp()
 
 	client.run = FALSE
 	client.MovePlayer()
+
+/keybind/modifyhud
+	name = "Modify HUD"
+
+/keybind/modifyhud/KeyDown()
+	if(!..())
+		return
+
+	client.modify_hud = !client.modify_hud
+	client.ModifyHUD()

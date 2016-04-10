@@ -23,6 +23,7 @@
 #include "code\debug\debug.dm"
 #include "code\hud\_hud.dm"
 #include "code\hud\hud_objects.dm"
+#include "code\hud\overlay.dm"
 #include "code\turf\turf.dm"
 #include "maps\devmap.dmm"
 #include "ui\interface.dmf"

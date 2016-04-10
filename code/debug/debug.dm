@@ -9,17 +9,16 @@
 	set name = "dout"
 	dout(s)
 
-var
-  worldstarttime = 0
-  worldstarttimeofday = 0
+/var/global/worldstarttime = 0
+/var/global/worldstarttimeofday = 0
 
-client
-  Stat()
+/client/Stat()
 	#if WORLDTICKDRIFT
-    if (!worldstarttime || worldstarttimeofday)
-      worldstarttime = world.time
-      worldstarttimeofday = world.timeofday
-    var/tickdrift = (worldstarttimeofday - world.timeofday) - (worldstarttime - world.time)  / world.tick_lag
-    statpanel("Tick Drift", "[round(tickdrift)] Missed ticks")
+	if (!worldstarttime || worldstarttimeofday)
+		worldstarttime = world.time
+		worldstarttimeofday = world.timeofday
+	var/tickdrift = (worldstarttimeofday - world.timeofday) - (worldstarttime - world.time)  / world.tick_lag
+	if(usr)
+		statpanel("Tick Drift", "[round(tickdrift)] Missed ticks")
 	#endif
-    ..()
+	..()

@@ -29,6 +29,8 @@
 				keybinds["S"] = K
 			if("Run")
 				keybinds["SHIFT"] = K
+			if("Modify HUD")
+				keybinds["Escape"] = K
 	..()
 
 //MovePlayer

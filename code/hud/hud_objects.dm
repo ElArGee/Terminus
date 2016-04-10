@@ -1,35 +1,36 @@
 /**********************************\
  Intent menu buttons
 \**********************************/
-/hudobj/intent
-	var/intent_icon = "help"
-	var/intent_color = "FFFFFF"
+/hudobj/popup_button/intent/help
+	overlay_icon_state = "help"
+	overlay_color = "#00FF00"
 
-/hudobj/intent/New()
-	..()
-	var/image/I = new(icon = 'icons/ui.dmi', icon_state = intent_icon)
-	I.color = intent_color
-	overlays += I
+/hudobj/popup_button/intent/grab
+	overlay_icon_state = "grab"
+	overlay_color = "#FFFF00"
 
-/hudobj/intent/Click()
-	var/hudobj/menu/M = parent
-	if(istype(M))
-		M.UpdateSelected(src)
-		M.state = 0
-		M.ToggleMenu()
+/hudobj/popup_button/intent/disarm
+	overlay_icon_state = "disarm"
+	overlay_color = "#00CCFF"
 
-/hudobj/intent/help
-	intent_icon = "help"
-	intent_color = "#00FF00"
+/hudobj/popup_button/intent/harm
+	overlay_icon_state = "harm"
+	overlay_color = "#FF4400"
 
-/hudobj/intent/grab
-	intent_icon = "grab"
-	intent_color = "#FFFF00"
+/hudobj/menu/intent
+	button_types = list(/hudobj/intent/harm, /hudobj/intent/disarm, /hudobj/intent/grab, /hudobj/intent/help)
 
-/hudobj/intent/disarm
-	intent_icon = "disarm"
-	intent_color = "#00CCFF"
+/hudobj/toggle/pull
+	overlay_icon_state = "pull"
 
-/hudobj/intent/harm
-	intent_icon = "harm"
-	intent_color = "#FF4400"
+/hudobj/toggle/drop
+	overlay_icon_state = "drop"
+
+/hudobj/toggle/resist
+	overlay_icon_state = "resist"
+
+/hudobj/toggle/throw
+	overlay_icon_state = "throw0"
+
+/hudobj/toggle/zone
+	overlay_icon_state = "zone"
