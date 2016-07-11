@@ -1,59 +1,83 @@
 macro "keybinds"
-	elem
+	elem 
+		name = "ESCAPE"
+		command = ".keydown Escape"
+		is-disabled = false
+	elem 
+		name = "ESCAPE+UP"
+		command = ".keyup Escape"
+		is-disabled = false
+	elem 
 		name = "A"
 		command = ".keydown A"
 		is-disabled = false
-	elem
+	elem 
 		name = "A+UP"
 		command = ".keyup A"
 		is-disabled = false
-	elem
+	elem 
+		name = "D"
+		command = ".keydown D"
+		is-disabled = false
+	elem 
+		name = "D+UP"
+		command = ".keyup D"
+		is-disabled = false
+	elem 
+		name = "E"
+		command = ".keydown E"
+		is-disabled = false
+	elem 
+		name = "E+UP"
+		command = ".keyup E"
+		is-disabled = false
+	elem 
+		name = "F"
+		command = ".keydown F"
+		is-disabled = false
+	elem 
+		name = "F+UP"
+		command = ".keyup F"
+		is-disabled = false
+	elem 
 		name = "Q"
 		command = ".keydown Q"
 		is-disabled = false
-	elem
+	elem 
 		name = "Q+UP"
 		command = ".keyup Q"
 		is-disabled = false
-	elem
+	elem 
 		name = "R"
 		command = ".keydown R"
 		is-disabled = false
-	elem
+	elem 
 		name = "R+UP"
 		command = ".keyup R"
 		is-disabled = false
-	elem
+	elem 
 		name = "S"
 		command = ".keydown S"
 		is-disabled = false
-	elem
+	elem 
 		name = "S+UP"
 		command = ".keyup S"
 		is-disabled = false
-	elem
+	elem 
 		name = "W"
 		command = ".keydown W"
 		is-disabled = false
-	elem
+	elem 
 		name = "W+UP"
 		command = ".keyup W"
 		is-disabled = false
-	elem
+	elem 
 		name = "SHIFT"
 		command = ".keydown SHIFT"
 		is-disabled = false
-	elem
+	elem 
 		name = "SHIFT+UP"
 		command = ".keyup SHIFT"
-		is-disabled = false
-	elem
-		name = "Escape"
-		command = ".keydown Escape"
-		is-disabled = false
-	elem
-		name = "Escape+UP"
-		command = ".keyup Escape"
 		is-disabled = false
 
 
@@ -148,7 +172,7 @@ window "iowindow"
 		visited-color = #ff00ff
 		style = ""
 		enable-http-images = false
-		max-lines = 1000
+		max-lines = 0
 		image = ""
 
 window "mainwindow"
@@ -357,3 +381,4 @@ window "statwindow"
 		on-tab = ""
 		prefix-color = none
 		suffix-color = none
+

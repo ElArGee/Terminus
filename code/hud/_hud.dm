@@ -53,8 +53,8 @@
 /hudobj/proc/GetIndex()
 	if(group)
 		return group.hudobjs.Find(src) - 1
-	else if(parent)
-		return parent.GetIndex()
+/*	else if(parent)
+		return parent.GetIndex()*/
 	else
 		return 1
 
@@ -93,10 +93,10 @@
 			oy = screen_y + HUD_BUFFER
 		if("NORTH")
 			ay = "NORTH+0"
-			if(parent && parent.anchor_y == NORTH)
+/*			if(parent && parent.anchor_y == NORTH)
 				oy = -TILE_HEIGHT - height + screen_y - HUD_BUFFER
-			else
-				oy = TILE_HEIGHT - height + screen_y - HUD_BUFFER
+			else*/
+			oy = TILE_HEIGHT - height + screen_y - HUD_BUFFER
 		if("CENTER")
 			ay = "CENTER+0"
 			oy = floor((TILE_HEIGHT - height)/2) + screen_y
@@ -143,7 +143,7 @@
 	UpdateSelected(buttons[buttons.len])
 	ToggleMenu()
 
-/hudobj/proc/UpdateMenuButton(var/i)
+/hudobj/popup_button/proc/UpdateMenuButton(var/i)
 	var/hudobj/menu/M = parent
 	anchor_x = M.anchor_x
 	anchor_y = M.anchor_y

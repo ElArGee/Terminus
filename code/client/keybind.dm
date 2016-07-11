@@ -52,7 +52,9 @@ KeyUp()
 /keybind/north/KeyDown()
 	if(!..())
 		return
+//	client.North()
 	client.move_dir_y = NORTH
+	client.last_axis = Y_AXIS
 	client.MovePlayer()
 
 /keybind/north/KeyUp()
@@ -61,6 +63,8 @@ KeyUp()
 
 	if(client.move_dir_y == NORTH)
 		client.move_dir_y = 0
+	if(client.move_dir_x)
+		client.last_axis = X_AXIS
 
 	client.MovePlayer()
 
@@ -70,7 +74,9 @@ KeyUp()
 /keybind/south/KeyDown()
 	if(!..())
 		return
+//	client.South()
 	client.move_dir_y = SOUTH
+	client.last_axis = Y_AXIS
 	client.MovePlayer()
 
 /keybind/south/KeyUp()
@@ -79,6 +85,8 @@ KeyUp()
 
 	if(client.move_dir_y == SOUTH)
 		client.move_dir_y = 0
+	if(client.move_dir_x)
+		client.last_axis = X_AXIS
 
 	client.MovePlayer()
 
@@ -88,7 +96,9 @@ KeyUp()
 /keybind/east/KeyDown()
 	if(!..())
 		return
+//	client.East()
 	client.move_dir_x = EAST
+	client.last_axis = X_AXIS
 	client.MovePlayer()
 
 /keybind/east/KeyUp()
@@ -97,6 +107,8 @@ KeyUp()
 
 	if(client.move_dir_x == EAST)
 		client.move_dir_x = 0
+	if(client.move_dir_y)
+		client.last_axis = Y_AXIS
 
 	client.MovePlayer()
 
@@ -106,7 +118,9 @@ KeyUp()
 /keybind/west/KeyDown()
 	if(!..())
 		return
+//	client.West()
 	client.move_dir_x = WEST
+	client.last_axis = X_AXIS
 	client.MovePlayer()
 
 /keybind/west/KeyUp()
@@ -115,25 +129,34 @@ KeyUp()
 
 	if(client.move_dir_x == WEST)
 		client.move_dir_x = 0
+	if(client.move_dir_y)
+		client.last_axis = Y_AXIS
 
 	client.MovePlayer()
 
-/keybind/shift
+/keybind/run
 	name = "Run"
 
-/keybind/shift/KeyDown()
+/keybind/run/KeyDown()
 	if(!..())
 		return
 
-	client.run = TRUE
-	client.MovePlayer()
+	if(client.toggle_run)
+		client.run_state = !client.run_state
+	else
+		client.run_state = TRUE
 
-/keybind/shift/KeyUp()
+	client.Run()
+
+/keybind/run/KeyUp()
 	if(!..())
 		return
 
-	client.run = FALSE
-	client.MovePlayer()
+	if(client.toggle_run)
+		return
+
+	client.run_state = FALSE
+	client.Run()
 
 /keybind/modifyhud
 	name = "Modify HUD"

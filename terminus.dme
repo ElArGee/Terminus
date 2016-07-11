@@ -14,16 +14,21 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "code\terminus.dm"
 #include "code\_defines\_defines.dm"
 #include "code\client\client.dm"
 #include "code\client\client_control.dm"
 #include "code\client\keybind.dm"
 #include "code\client\stylesheet.dm"
 #include "code\debug\debug.dm"
+#include "code\debug\global.dm"
+#include "code\debug\terminus.dm"
 #include "code\hud\_hud.dm"
 #include "code\hud\hud_objects.dm"
 #include "code\hud\overlay.dm"
+#include "code\mob\mob.dm"
+#include "code\objects\atom.dm"
+#include "code\objects\structure\structure.dm"
+#include "code\objects\structure\wall.dm"
 #include "code\turf\turf.dm"
 #include "maps\devmap.dmm"
 #include "ui\interface.dmf"

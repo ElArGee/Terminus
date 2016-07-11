@@ -18,7 +18,7 @@
 	overlay_color = "#FF4400"
 
 /hudobj/menu/intent
-	button_types = list(/hudobj/intent/harm, /hudobj/intent/disarm, /hudobj/intent/grab, /hudobj/intent/help)
+	button_types = list(/hudobj/popup_button/intent/harm, /hudobj/popup_button/intent/disarm, /hudobj/popup_button/intent/grab, /hudobj/popup_button/intent/help)
 
 /hudobj/toggle/pull
 	overlay_icon_state = "pull"

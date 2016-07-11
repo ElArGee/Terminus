@@ -28,6 +28,29 @@
 
 
 /client/New()
+	key_actions = list()
+	keybinds = list()
+
+	for(var/T in (typesof(/keybind) - /keybind))
+		key_actions.Add(new T(src))
+/*
+	//temp code for mapping keybinds at client join
+	for(var/keybind/K in key_actions)
+		switch(K.name)
+			if("Move Up")
+				keybinds["W"] = K
+			if("Move Down")
+				keybinds["R"] = K
+			if("Move Left")
+				keybinds["A"] = K
+			if("Move Right")
+				keybinds["S"] = K
+			if("Run")
+				keybinds["SHIFT"] = K
+			if("Modify HUD")
+				keybinds["Escape"] = K
+*/
+/*
 	modify_overlay = new(null, src)
 	bottom_left = new(null, src, list(anchor_x = "WEST", anchor_y = "SOUTH"))
 
@@ -56,6 +79,8 @@
 
 	var/hudobj/toggle/pull/Pt = new(null, src, null, 1)
 	top_mid.Add(Pt)
+*/
+
 
 /*	top_left = new(null, src, list(anchor_x = "WEST", anchor_y = "NORTH"))
 	top_left.Add(P)*/
@@ -88,7 +113,7 @@
 	for(var/hudobj/H in screen)
 		H.UpdatePos()
 
-/client/Click(object, location, control, params)
+/client/Click(atom/object, location, control, params)
 	if(modify_hud)
 		if(!modifying_hudobj)
 			if(istype(object, /hudobj))
@@ -106,7 +131,7 @@
 		else
 			return
 	else
-		..()
+		object.Click(mob, location, control, params)
 
 /client/proc/ModifyHUD()
 	if(modify_hud)
